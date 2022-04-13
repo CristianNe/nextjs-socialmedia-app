@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, where, limit, getDocs, QueryDocumentSnapshot } from'firebase/firestore'
+import { getFirestore, collection, query, where, limit, getDocs, Timestamp } from'firebase/firestore'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 import { getStorage } from 'firebase/storage'
 // TODO: Add SDKs for Firebase products that you want to use
@@ -52,3 +52,5 @@ export const storage = getStorage(app);
     updatedAt: data.updatedAt.toMillis(),
   };
 }
+
+export const fromMillis = Timestamp.fromMillis;
