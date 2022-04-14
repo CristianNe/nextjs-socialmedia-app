@@ -4,7 +4,6 @@ import { getUserWithUsername, firestore, postToJSON } from "../../lib/firebase";
 import { collection, where, query, orderBy, limit, getDocs } from "firebase/firestore";
 
 export async function getServerSideProps(context){
-    console.log(context.query);
     const { username } = context.query;
     const userDoc = await getUserWithUsername(username);
     
@@ -13,6 +12,7 @@ export async function getServerSideProps(context){
 
     if(userDoc){
         user = userDoc.data();
+        
         const postsQuery = query( 
             collection(firestore, userDoc.ref.path + '/posts'),
             where('published', '==', true),
@@ -27,7 +27,6 @@ export async function getServerSideProps(context){
 
 // Server-rendered page
 export default function UserProfilePage({ user, posts }) {
-    console.log(posts);
     return(
         <main>
             <UserProfile user={user} />
