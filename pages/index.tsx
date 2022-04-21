@@ -3,6 +3,7 @@ import Loader from '../components/Loader';
 import { firestore, fromMillis, postToJSON } from '../lib/firebase';
 import { useState } from 'react';
 import { collectionGroup, getDocs, limit, orderBy, query, startAfter, where } from 'firebase/firestore';
+import MetaTags from '../components/Metatags';
 
 const _LIMIT = 1;
 // is prepares props for server rendered page
@@ -50,6 +51,11 @@ export default function Home(props) {
 
   return (
     <main>
+      <MetaTags 
+      title="nextjs-socialmedia-app"
+      description="Blog created with Next.js"
+      image=""
+      type="website"/>
       <PostFeed posts={posts} />
 
       {!loading && !postsEnd && <button onClick={getMorePosts}>Load more</button>}

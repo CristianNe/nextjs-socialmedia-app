@@ -1,4 +1,5 @@
 // this page uses Incremental Static Regeneration
+import styles from '../../styles/Post.module.css';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { collection, collectionGroup, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore";
 import { firestore, getUserWithUsername, postToJSON } from "../../lib/firebase";
@@ -59,7 +60,7 @@ export default function PostPage(props) {
                 <PostContent post={post} />
             </section>
 
-            <aside className='card'>
+            <aside className={styles.container}>
                 <p>
                     <strong>{post.heartCount || 0} 🤍</strong>
                 </p>
