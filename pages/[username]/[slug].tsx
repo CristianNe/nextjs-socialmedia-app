@@ -4,6 +4,9 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { collection, collectionGroup, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore";
 import { firestore, getUserWithUsername, postToJSON } from "../../lib/firebase";
 import PostContent from '../../components/PostContent';
+import AuthCheck from '../../components/AuthCheck';
+import HeartButton from '../../components/HeartButton';
+import Link from 'next/link';
 
 // getStaticProps fetches data on the server at build time
 // in order to pre-render page in advance
@@ -64,6 +67,15 @@ export default function PostPage(props) {
                 <p>
                     <strong>{post.heartCount || 0} 🤍</strong>
                 </p>
+
+                <AuthCheck
+                fallback={
+                    <Link href="./enter">
+                        <button>💗 Sign Up</button>
+                    </Link>
+                }>
+                    <HeartButton postRef={postRef} />
+                </AuthCheck>
             </aside>
         </main>
     )

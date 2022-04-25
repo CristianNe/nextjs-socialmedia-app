@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, where, limit, getDocs, Timestamp, serverTimestamp } from'firebase/firestore'
+import { getFirestore, collection, query, where, limit, getDocs, Timestamp, serverTimestamp, } from'firebase/firestore'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
-import { getStorage } from 'firebase/storage'
+import { getStorage, TaskEvent } from 'firebase/storage'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -55,3 +55,6 @@ export const storage = getStorage(app);
 
 export const fromMillis = Timestamp.fromMillis;
 export const servertimestamp = serverTimestamp;
+
+// Storage exports
+export const STATE_CHANGED = 'state_changed';
